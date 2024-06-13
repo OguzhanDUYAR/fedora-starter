@@ -92,7 +92,14 @@ sudo wget https://raw.githubusercontent.com/OguzhanDUYAR/MyFixAppLinux/main/myfi
 echo "Updating system and preparing for reboot..."
 sudo dnf check-update -y
 neofetch
-echo "All tasks completed successfully! Press any key to reboot."
-read -n 1 -s
+echo "All tasks completed successfully! Press Y key to reboot."
+# Ask the user if they want to close the terminal
+read -p "Do you want to close the terminal? (y/n): " answer
 
-sudo reboot
+# Check the user's answer
+if [[ $answer == "y" ]]; then
+    sudo reboot
+else
+    echo "The terminal will remain open."
+fi
+
