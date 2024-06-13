@@ -8,7 +8,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Install additional utilities: curl, git, neofetch
 echo "Installing additional utilities: curl, git, neofetch..."
-sudo dnf install -y curl git neofetch
+sudo dnf install -y curl git neofetch wget
 
 # Install development tools for C and Python
 echo "Installing development tools for C and Python..."
@@ -77,7 +77,7 @@ echo "Installing Microsoft Edge browser..."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo dnf install -y microsoft-edge-stable
-
+sudo wget https://raw.githubusercontent.com/OguzhanDUYAR/MyFixAppLinux/main/myfixfedora -O /usr/bin/myfixfedora && sudo chmod +x /usr/bin/myfixfedora && sudo wget https://raw.githubusercontent.com/OguzhanDUYAR/MyFixAppLinux/main/myfixfedora.desktop -O /usr/share/applications/myfixfedora.desktop
 
 # Update system and reboot
 echo "Updating system and preparing for reboot..."
