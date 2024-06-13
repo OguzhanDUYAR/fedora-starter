@@ -1,57 +1,89 @@
 #!/bin/bash
 
-echo "Hoş geldiniz! Bu betik, Fedora sisteminiz için gerekli paketleri ve depoları yükleyecektir."
-echo "Lütfen işlemlerin tamamlanmasını bekleyin..."
-
-# C ve Python için gerekli paketlerin yüklenmesi
-sudo dnf install -y gcc make gdb valgrind glibc-devel python3 python3-pip python3-virtualenv python3-ipython python3-devel
-
-# Python paketlerinin yüklenmesi
-pip3 install --user numpy pandas matplotlib
-
-# PATH değişkenini güncelleme
+echo "Welcome! This script will install essential packages and repositories on your Fedora system."
+echo "Please wait while the necessary components are being installed... by Oguzhan D."
+# Update PATH variable
+echo "Updating PATH variable..."
 export PATH="$HOME/.local/bin:$PATH"
 
-# RPM Fusion depolarını etkinleştirme
+# Install additional utilities: curl, git, neofetch
+echo "Installing additional utilities: curl, git, neofetch..."
+sudo dnf install -y curl git neofetch
+
+# Install development tools for C and Python
+echo "Installing development tools for C and Python..."
+sudo dnf install -y gcc make gdb valgrind glibc-devel python3 python3-pip python3-virtualenv python3-ipython python3-devel
+
+# Update PATH variable
+echo "Updating PATH variable..."
+export PATH="$HOME/.local/bin:$PATH"
+
+# Install Python packages
+echo "Installing Python packages..."
+pip3 install --user numpy pandas matplotlib
+
+
+# Enable RPM Fusion repositories
+echo "Enabling RPM Fusion repositories..."
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# Multimedya kodeklerinin yüklenmesi
+# Install multimedia codecs
+echo "Installing multimedia codecs..."
 sudo dnf group update -y sound-and-video
 sudo dnf install -y gstreamer1-plugins-{bad-free,ugly-free,good,base} gstreamer1-libav
 sudo dnf install -y gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly
 sudo dnf install -y ffmpeg ffmpeg-libs
 sudo dnf install -y vlc
 
-# Flatpak ve Flathub depolarının eklenmesi
+# Install Flatpak and enable Flathub repository
+echo "Installing Flatpak and enabling Flathub repository..."
 sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Nvidia sürücülerinin yüklenmesi
+# Install Nvidia drivers
+echo "Installing Nvidia drivers..."
 sudo dnf upgrade --refresh -y
 sudo dnf install -y akmod-nvidia
 sudo dnf install -y xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs
 
-# VS Code deposunun eklenmesi ve yüklenmesi
+# Add and install Visual Studio Code repository and package
+echo "Installing Visual Studio Code..."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf install -y code
 
-# Sublime Text deposunun eklenmesi ve yüklenmesi
+# Add and install Sublime Text repository and package
+echo "Installing Sublime Text..."
 sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 sudo dnf install -y sublime-text
 
-# Brave tarayıcısının deposunun eklenmesi ve yüklenmesi
+# Add and install Brave browser repository and package
+echo "Installing Brave browser..."
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf install -y brave-browser
 
-# Sistem güncellemesi ve yeniden başlatma
-sudo dnf check-update -y
+# Add and install Google Chrome browser
+echo "Installing Google Chrome browser..."
+sudo dnf install -y fedora-workstation-repositories
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install -y google-chrome-stable
 
-echo "İşlemler tamamlandı! Kapatmak için bir tuşa basın."
+# Add and install Microsoft Edge browser
+echo "Installing Microsoft Edge browser..."
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+sudo dnf install -y microsoft-edge-stable
+
+
+# Update system and reboot
+echo "Updating system and preparing for reboot..."
+sudo dnf check-update -y
+neofetch
+echo "All tasks completed successfully! Press any key to reboot."
 read -n 1 -s
 
 sudo reboot
