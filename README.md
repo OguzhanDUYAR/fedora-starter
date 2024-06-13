@@ -1,3 +1,5 @@
+![alt text](https://raw.githubusercontent.com/OguzhanDUYAR/fedora-starter/main/fedora-starter-logo.webp)
+
 # Fedora Starter Script
 
 Welcome to the Fedora Starter Script repository! This script installs essential development tools, multimedia codecs, Flatpak, Nvidia drivers, VS Code, Sublime Text, Brave, Google Chrome, and Microsoft Edge browsers on your Fedora system.
