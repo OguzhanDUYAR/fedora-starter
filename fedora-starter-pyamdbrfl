@@ -48,11 +48,12 @@ echo "Installing Flatpak and enabling Flathub repository..."
 sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Install Nvidia drivers
-echo "Installing Nvidia drivers..."
+# Install AMD drivers
+echo "Installing AMD drivers..."
 sudo dnf upgrade --refresh -y
-sudo dnf install -y akmod-nvidia
-sudo dnf install -y xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs
+sudo dnf install kernel-headers kernel-devel gcc dkms make -y
+sudo dnf install xorg-x11-drv-amdgpu
+
 
 # Add and install Visual Studio Code repository and package
 echo "Installing Visual Studio Code..."
