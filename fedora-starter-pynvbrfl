@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo dnf check-update -y
+
 echo "Welcome! This script will install essential packages and repositories on your Fedora system."
 echo "Please wait while the necessary components are being installed... by Oguzhan D."
 # Update PATH variable
