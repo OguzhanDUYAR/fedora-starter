@@ -86,10 +86,10 @@ sudo dnf config-manager --set-enabled google-chrome
 sudo dnf install -y google-chrome-stable
 
 # Add and install Microsoft Edge browser
-echo "Installing Microsoft Edge browser..."
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
-sudo dnf install -y microsoft-edge-stable
+# echo "Installing Microsoft Edge browser..."
+# sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+# sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+# sudo dnf install -y microsoft-edge-stable
 sudo wget https://raw.githubusercontent.com/OguzhanDUYAR/MyFixAppLinux/main/myfixfedora -O /usr/bin/myfixfedora && sudo chmod +x /usr/bin/myfixfedora && sudo wget https://raw.githubusercontent.com/OguzhanDUYAR/MyFixAppLinux/main/myfixfedora.desktop -O /usr/share/applications/myfixfedora.desktop
 
 
