@@ -1,6 +1,10 @@
 #!/bin/bash
 
 sudo dnf check-update -y
+sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf update -y
+
 
 echo "Welcome! This script will install essential packages and repositories on your Fedora system."
 echo "Please wait while the necessary components are being installed... by Oguzhan D."
