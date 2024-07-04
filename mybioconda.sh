@@ -72,7 +72,7 @@ source $HOME/anaconda3/bin/activate mybio
 # Install specified packages
 echo "Installing packages in the 'mybio' environment..."
 $HOME/anaconda3/bin/conda install -n mybio -c conda-forge bioconda -y
-$HOME/anaconda3/bin/conda install -n mybio numpy pandas spyder pymol -y
+$HOME/anaconda3/bin/conda install -n mybio numpy pandas spyder biopy -y
 
 
 # Add command to activate 'mybio' environment by default in .bashrc and .zshrc
