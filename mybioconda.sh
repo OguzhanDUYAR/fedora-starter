@@ -74,8 +74,6 @@ echo "Installing packages in the 'mybio' environment..."
 $HOME/anaconda3/bin/conda install -n mybio -c conda-forge bioconda -y
 $HOME/anaconda3/bin/conda install -n mybio numpy pandas spyder pymol -y
 
-echo "Installing cpacks using pip..."
-$HOME/anaconda3/bin/conda run -n mybio pip install cpacks
 
 # Add command to activate 'mybio' environment by default in .bashrc and .zshrc
 ACTIVATE_CMD='conda activate mybio'
