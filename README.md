@@ -26,6 +26,10 @@ curl -sL https://raw.githubusercontent.com/OguzhanDUYAR/fedora-starter/main/fedo
 ```
 ## Only GAMER
 
+## ANACONDA 2024 SETUP
+```bash
+curl -sSL https://raw.githubusercontent.com/OguzhanDUYAR/fedora-starter/main/mybioconda.sh | bash
+```
 ## What It Does
 Development Tools: Installs gcc, make, gdb, valgrind, glibc-devel, python3, python3-pip, python3-virtualenv, python3-ipython, python3-devel.
 Python Packages: Installs numpy, pandas, matplotlib.
