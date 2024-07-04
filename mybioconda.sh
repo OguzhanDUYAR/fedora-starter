@@ -72,7 +72,7 @@ source $HOME/anaconda3/bin/activate mybio
 # Install specified packages
 echo "Installing packages in the 'mybio' environment..."
 $HOME/anaconda3/bin/conda install -n mybio -c conda-forge bioconda -y
-$HOME/anaconda3/bin/conda install -n mybio numpy pandas spyder biopy -y
+$HOME/anaconda3/bin/conda install -n mybio numpy pandas spyder biopy anaconda-navigator -y
 
 
 # Add command to activate 'mybio' environment by default in .bashrc and .zshrc
@@ -87,5 +87,5 @@ if [ -f "$HOME/.zshrc" ]; then
 fi
 
 echo "Anaconda setup and configuration completed successfully."
-
+anaconda-navigator
 
