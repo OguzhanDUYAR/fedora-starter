@@ -19,7 +19,7 @@ if ! command_exists conda; then
     curl -O $ANACONDA_URL
 
     echo "Installing Anaconda..."
-    bash $INSTALLER -b -p $HOME/anaconda3
+    bash $INSTALLER
 
     echo "Cleaning up installer..."
     rm $INSTALLER
@@ -32,16 +32,9 @@ if [ -f "$HOME/.bashrc" ]; then
     grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.bashrc" || echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
 fi
 
-if [ -f "$HOME/.zshrc" ]; then
-    grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.zshrc" || echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
-fi
 
-# Source .bashrc or .zshrc
-if [ -n "$BASH_VERSION" ]; then
-    source "$HOME/.bashrc"
-elif [ -n "$ZSH_VERSION" ]; then
-    source "$HOME/.zshrc"
-fi
+source "$HOME/.bashrc"
+
 
 # Create .desktop file for Anaconda Navigator
 DESKTOP_FILE="$HOME/.local/share/applications/anaconda-navigator.desktop"
